@@ -7,8 +7,15 @@ import './App.css'
 
 class BooksApp extends Component {
   state = {
-    books: [ ],
-    showSearchPage: false
+    books: [ ]
+  }
+
+  componentDidMount(){
+    console.log("I'm in the componentDidMount() method")
+    BooksAPI.getAll().then((books) => {
+      this.setState({ books })
+    })
+    console.log("Books length: " + this.state.books)
   }
 
   render() {
@@ -19,7 +26,9 @@ class BooksApp extends Component {
             <h1>My Reads</h1>
           </div>
         <Route exact path='/' render={() =>(
-            <ListBooks />
+            <ListBooks
+              books={ this.state.books }
+            />
         )}/>
 
         <Route path='/search' render={({ history}) => (
