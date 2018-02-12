@@ -8,17 +8,10 @@ class ListBooks extends Component {
   render(){
 
     return(
-      <div className="list-books">
-        <div className="list-books-title">
-          <h1>My Reads</h1>
-        </div>
         <div className="list-books-content">
           <div>
             <div className="bookshelf">
               <h2 className="bookshelf-title">Currently Reading</h2>
-              {
-              //Start block
-              }
               <div className="bookshelf-books">
                 <ol className="books-grid">
                   <li>
@@ -59,10 +52,6 @@ class ListBooks extends Component {
                   </li>
                 </ol>
               </div>
-              {
-              //End block
-            }
-
             </div>
             <div className="bookshelf">
               <h2 className="bookshelf-title">Want to Read</h2>
@@ -169,11 +158,10 @@ class ListBooks extends Component {
               </div>
             </div>
           </div>
+          <div className="open-search">
+            <Link to="/search" className="search">Add Book</Link>
+          </div>
         </div>
-        <div className="open-search">
-          <Link to="/search" className="search">Add Book</Link>
-        </div>
-      </div>
     )
   }
 }

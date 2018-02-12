@@ -14,17 +14,18 @@ class BooksApp extends Component {
   render() {
     return (
       <div className="app">
-
+        <div className="list-books">
+          <div className="list-books-title">
+            <h1>My Reads</h1>
+          </div>
         <Route exact path='/' render={() =>(
             <ListBooks />
         )}/>
 
-      <Route path='/search' render={({ history}) => (
-          <AddBook />
-      )}/>
-
-
-
+        <Route path='/search' render={({ history}) => (
+            <AddBook />
+        )}/>
+        </div>
       </div>
     )
   }

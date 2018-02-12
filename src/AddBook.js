@@ -3,6 +3,11 @@ import { Link } from 'react-router-dom';
 import serializeForm from 'form-serialize';
 
 class AddBook extends Component{
+
+  state = {
+
+  }
+  
   render(){
     return (
       <div className="search-books">
