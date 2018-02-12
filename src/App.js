@@ -11,11 +11,9 @@ class BooksApp extends Component {
   }
 
   componentDidMount(){
-    console.log("I'm in the componentDidMount() method")
     BooksAPI.getAll().then((books) => {
       this.setState({ books })
     })
-    console.log("Books length: " + this.state.books)
   }
 
   render() {
