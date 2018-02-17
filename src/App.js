@@ -16,12 +16,12 @@ class BooksApp extends Component {
     })
   }
 
-  updateBookStatus(book, shelf)
-  {
-    BooksAPI.update(book, shelf)
-    //Must need to do something here to refresh the view??? This is ok for now...
-    BooksAPI.getAll().then((books) => {
-      this.setState({ books })
+  updateBookStatus = (xBook, shelf) => {
+      BooksAPI.update(xBook, shelf).then(response =>{
+      xBook.shelf = shelf
+      var newLibrary = this.state.books.filter( book => book.id !== xBook.id )
+      newLibrary.push(xBook)
+      this.setState(state => ({books: newLibrary}))
     })
   }
 

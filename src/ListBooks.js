@@ -9,8 +9,6 @@ class ListBooks extends Component {
 
   }
 
-
-
   render(){
     const { books } = this.props;
     let currentShelf
@@ -36,7 +34,7 @@ class ListBooks extends Component {
                      <div className="book-top">
                        <div className="book-cover" style={{ width: 128, height: 193, backgroundImage: `url(${book.imageLinks.smallThumbnail})` }}></div>
                          <div className="book-shelf-changer">
-                           <select onChange={() => onChangeBook(book, 'currentlyReading')}>
+                           <select value={book.shelf} onChange={e=> onChangeBook(book, e.target.value)}>
                              <option value="none" disabled>Move to...</option>
                              <option value="currentlyReading">Currently Reading</option>
                              <option value="wantToRead">Want to Read</option>
@@ -68,7 +66,7 @@ class ListBooks extends Component {
                      <div className="book-top">
                        <div className="book-cover" style={{ width: 128, height: 193, backgroundImage: `url(${book.imageLinks.smallThumbnail})` }}></div>
                          <div className="book-shelf-changer">
-                           <select>
+                           <select value={book.shelf} onChange={e=> onChangeBook(book, e.target.value)}>
                              <option value="none" disabled>Move to...</option>
                              <option value="currentlyReading">Currently Reading</option>
                              <option value="wantToRead">Want to Read</option>
@@ -100,7 +98,7 @@ class ListBooks extends Component {
                      <div className="book-top">
                        <div className="book-cover" style={{ width: 128, height: 193, backgroundImage: `url(${book.imageLinks.smallThumbnail})` }}></div>
                          <div className="book-shelf-changer">
-                           <select>
+                           <select value={book.shelf} onChange={e=> this.updateShelf(book, e.target.value)}>
                              <option value="none" disabled>Move to...</option>
                              <option value="currentlyReading">Currently Reading</option>
                              <option value="wantToRead">Want to Read</option>
