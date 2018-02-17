@@ -16,6 +16,15 @@ class BooksApp extends Component {
     })
   }
 
+  updateBookStatus(book, shelf)
+  {
+    BooksAPI.update(book, shelf)
+    //Must need to do something here to refresh the view??? This is ok for now...
+    BooksAPI.getAll().then((books) => {
+      this.setState({ books })
+    })
+  }
+
   render() {
     return (
       <div className="app">
@@ -26,6 +35,7 @@ class BooksApp extends Component {
         <Route exact path='/' render={() =>(
             <ListBooks
               books={ this.state.books }
+              onChangeBook = { this.updateBookStatus }
             />
         )}/>
 
