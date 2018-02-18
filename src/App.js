@@ -35,13 +35,13 @@ class BooksApp extends Component {
         <Route exact path='/' render={() =>(
             <ListBooks
               books={ this.state.books }
-              onChangeBook = { this.updateBookStatus }
+              onChangeBook={ this.updateBookStatus }
             />
         )}/>
 
         <Route path='/search' render={({ history }) => (
             <AddBook
-              onAddBook = { this.updateBookStatus } 
+              onChangeBook={ this.updateBookStatus }
               />
         )}/>
         </div>

@@ -4,7 +4,7 @@ import PropTypes from 'prop-types';
 
 class Shelf extends Component{
 
-  state = { }
+  state={ }
 
 render() {
   const { onChangeBook } = this.props
@@ -32,11 +32,10 @@ render() {
                    </div>
                </div>
                <div className="book-title">{book.title}</div>
-               <div className="book-authors">
-                 {book.authors.map((author) => (
-                   <span key={author}>{ author } </span>
+                 { /* Really annoying that there are books without authors...dirty trick methinks...*/
+                   book.authors && book.authors.map((author, index) => (
+                     <div className="book-authors" key={index}>{author}</div>
                  ))}
-               </div>
                <div className="book-title">{book.shelf}</div>
              </div>
           </li>

@@ -6,7 +6,7 @@ import Shelf from './Shelf'
 
 class ListBooks extends Component {
 
-  state = {
+  state={
 
   }
 
@@ -22,29 +22,30 @@ class ListBooks extends Component {
 
     const { onChangeBook } = this.props
 
-    currentShelf = books.filter((books) => books.shelf === 'currentlyReading');
-    wantToReadShelf = books.filter((books) => books.shelf === 'wantToRead');
-    readShelf = books.filter((books) => books.shelf === 'read');
+    currentShelf = books.filter((books) => books.shelf === 'currentlyReading')
+    wantToReadShelf = books.filter((books) => books.shelf === 'wantToRead')
+    readShelf = books.filter((books) => books.shelf === 'read')
 
     return(
         <div className="list-books-content">
           <Shelf
-            shelf = { currentShelf }
-            shelfTitle = { arShelves[0].label }
-            onChangeBook = {onChangeBook}
+            shelf={ currentShelf }
+            shelfTitle={ arShelves[0].label }
+            onChangeBook={ onChangeBook }
             />
           <Shelf
-            shelf = { wantToReadShelf }
-            shelfTitle = { arShelves[1].label }
-            onChangeBook = {onChangeBook}
+            shelf={ wantToReadShelf }
+            shelfTitle={ arShelves[1].label }
+            onChangeBook={ onChangeBook }
             />
           <Shelf
-            shelf = { readShelf }
-            shelfTitle = { arShelves[2].label }
-            onChangeBook = {onChangeBook}
+            shelf={ readShelf }
+            shelfTitle={ arShelves[2].label }
+            onChangeBook={ onChangeBook }
             />
           <div className="open-search">
-            <Link to="/search" className="search">Add Book</Link>
+            <Link to="/search"
+              className="search">Add Book</Link>
           </div>
       </div>
     )
