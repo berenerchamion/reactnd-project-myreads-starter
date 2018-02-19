@@ -18,7 +18,6 @@ class AddBook extends Component{
 
     BooksAPI.search(q, 20).then ((searchResults)=> {
       if (searchResults.length > 0){
-        //this.setState({ searchResults })
         this.setState(state => ({searchResults: searchResults}))
         this.setState({ error: false })
       }
@@ -31,8 +30,7 @@ class AddBook extends Component{
   render(){
 
     const arShelves = [
-      {'id':'searchResults', 'label': 'Your Search Results'}]
-
+      {'id':'searchResults', 'label': 'Your Search Results: '+ this.state.searchResults.length + ' books.' }]
     const { onChangeBook } = this.props
 
     return (
@@ -52,40 +50,14 @@ class AddBook extends Component{
                value={ this.query }
                onChange={e=> this.searchBooks(e.target.value)}
                placeholder="Search by title or author"/>
-
            </div>
          </div>
          <div className="search-books-results">
-           <div className="bookshelf">
-             <h2 className="bookshelf-title">{ arShelves[0].label }: {this.state.searchResults.length}</h2>
-             <div className="bookshelf-books">
-               <ol className="books-grid">
-                 {this.state.searchResults.map((book) => (
-                   <li key={ book.id } className="bookListItem">
-                   <div className="book">
-                     <div className="book-top">
-                       <div className="book-cover" style={{ width: 128, height: 193, backgroundImage: `url(${ book.imageLinks.smallThumbnail })` }}></div>
-                         <div className="book-shelf-changer">
-                           <select value={ book.shelf } onChange={e=> onChangeBook(book, e.target.value)}>
-                             <option value="none" disabled>Move to...</option>
-                             <option value="currentlyReading">Currently Reading</option>
-                             <option value="wantToRead">Want to Read</option>
-                             <option value="read">Read</option>
-                             <option value="none">None</option>
-                           </select>
-                         </div>
-                     </div>
-                      <div className="book-title">{ book.title }</div>
-                        { /* Really annoying that there are books without authors...dirty trick methinks...*/
-                          book.authors && book.authors.map((author, index) => (
-                            <div className="book-authors" key={index}>{author}</div>
-                        ))}
-                    </div>
-                   </li>
-                 ))}
-               </ol>
-             </div>
-           </div>
+            <Shelf
+              shelf = { this.state.searchResults }
+              shelfTitle = { arShelves[0].label }
+              onChangeBook = { onChangeBook }
+            />
          </div>
        </div>
     )
