@@ -10,8 +10,11 @@ render() {
   const { onChangeBook } = this.props
   const { shelf } = this.props
   const { shelfTitle } = this.props
+  const { books } = this.props
 
   let none = 'none'
+  let coverUrl = ''
+  let authorList = ''
 
   return (
     <div className="bookshelf">
