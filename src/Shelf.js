@@ -36,7 +36,7 @@ render() {
                <div className="book-title">{book.title}</div>
                  { /* Really annoying that there are books without authors...dirty trick methinks...*/
                    book.authors && book.authors.map((author, index) => (
-                     <div className="book-authors" key={index}>{author}</div>
+                     <div className="book-authors" key={index} > {author}</div>
                  ))}
              </div>
           </li>

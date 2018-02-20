@@ -30,16 +30,19 @@ class ListBooks extends Component {
         <div className="list-books-content">
           <Shelf
             shelf={ currentShelf }
+            books = { books }
             shelfTitle={ arShelves[0].label }
             onChangeBook={ onChangeBook }
             />
           <Shelf
             shelf={ wantToReadShelf }
+            books = { books }
             shelfTitle={ arShelves[1].label }
             onChangeBook={ onChangeBook }
             />
           <Shelf
             shelf={ readShelf }
+            books = { books }
             shelfTitle={ arShelves[2].label }
             onChangeBook={ onChangeBook }
             />
