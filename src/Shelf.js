@@ -1,8 +1,15 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 import PropTypes from 'prop-types';
+import Book from './Book'
 
 class Shelf extends Component{
+    static propTypes = {
+      onChangeBook: PropTypes.func.isRequired,
+      shelf: PropTypes.array.isRequired,
+      shelf: PropTypes.string.isRequired,
+      books: PropTypes.array.isRequired
+  }
 
   state={ }
 
@@ -12,9 +19,9 @@ render() {
   const { shelfTitle } = this.props
   const { books } = this.props
 
-  let none = 'none'
   let coverUrl = ''
   let authorList = ''
+  let none = 'none'
 
   return (
     <div className="bookshelf">
@@ -22,27 +29,11 @@ render() {
       <div className="bookshelf-books">
         <ol className="books-grid">
           {shelf.map((book) => (
-          <li key={book.id} className="bookListItem">
-            <div className="book">
-               <div className="book-top">
-                 <div className="book-cover" style={{ width: 128, height: 193, backgroundImage: `url(${book.imageLinks.smallThumbnail})` }}></div>
-                   <div className="book-shelf-changer">
-                     <select value={book.shelf || none} onChange={e=> onChangeBook(book, e.target.value)}>
-                       <option value="none" disabled>Move to...</option>
-                       <option value="currentlyReading">Currently Reading</option>
-                       <option value="wantToRead">Want to Read</option>
-                       <option value="read">Read</option>
-                       <option value="none">None</option>
-                     </select>
-                   </div>
-               </div>
-               <div className="book-title">{book.title}</div>
-                 { /* Really annoying that there are books without authors...dirty trick methinks...*/
-                   book.authors && book.authors.map((author, index) => (
-                     <div className="book-authors" key={index} > {author}</div>
-                 ))}
-             </div>
-          </li>
+            <Book
+              onChangeBook={ onChangeBook }
+              book={ book }
+              books={ books }
+              />
           ))}
         </ol>
       </div>
