@@ -2,11 +2,12 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 
 class Book extends Component{
+  
   static propTypes = {
   onChangeBook: PropTypes.func.isRequired,
   book: PropTypes.object.isRequired,
   books: PropTypes.array.isRequired
-}
+  }
 
   state={ }
 

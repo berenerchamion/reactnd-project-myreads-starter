@@ -1,10 +1,14 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 import PropTypes from 'prop-types';
-import escapeRegExp from 'escape-string-regexp';
 import Shelf from './Shelf'
 
 class ListBooks extends Component {
+
+  static propTypes = {
+    onChangeBook: PropTypes.func.isRequired,
+    books: PropTypes.array.isRequired
+  }
 
   state={
 
@@ -30,19 +34,19 @@ class ListBooks extends Component {
         <div className="list-books-content">
           <Shelf
             shelf={ currentShelf }
-            books = { books }
+            books={ books }
             shelfTitle={ arShelves[0].label }
             onChangeBook={ onChangeBook }
             />
           <Shelf
             shelf={ wantToReadShelf }
-            books = { books }
+            books={ books }
             shelfTitle={ arShelves[1].label }
             onChangeBook={ onChangeBook }
             />
           <Shelf
             shelf={ readShelf }
-            books = { books }
+            books={ books }
             shelfTitle={ arShelves[2].label }
             onChangeBook={ onChangeBook }
             />

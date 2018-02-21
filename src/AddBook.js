@@ -1,10 +1,15 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
-import serializeForm from 'form-serialize';
+import PropTypes from 'prop-types';
 import * as BooksAPI from './BooksAPI'
 import Shelf from './Shelf'
 
 class AddBook extends Component{
+
+  static propTypes = {
+    onChangeBook: PropTypes.func.isRequired,
+    books: PropTypes.array.isRequired
+  }
 
   state={
     searchResults : [],
