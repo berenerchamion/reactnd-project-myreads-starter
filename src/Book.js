@@ -2,11 +2,11 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 
 class Book extends Component{
-  
+
   static propTypes = {
-  onChangeBook: PropTypes.func.isRequired,
-  book: PropTypes.object.isRequired,
-  books: PropTypes.array.isRequired
+    onChangeBook: PropTypes.func.isRequired,
+    book: PropTypes.object.isRequired,
+    books: PropTypes.array.isRequired
   }
 
   state={ }
@@ -17,7 +17,7 @@ class Book extends Component{
     const { book } = this.props
     const { books } = this.props
     //Handle missing images
-    let coverUrl = book.imageLinks.smallThumbnail && book.imageLinks.smallThumbnail ? book.imageLinks.smallThumbnail : 'No image available'
+    let coverUrl = book.imageLinks && book.imageLinks.smallThumbnail ? book.imageLinks.smallThumbnail : 'No image available'
     //Handle missing titles
     let title = book.title && book.title ? book.title: 'No title available'
 
